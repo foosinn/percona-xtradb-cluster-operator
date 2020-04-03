@@ -34,6 +34,9 @@ func NewNode(cr *api.PerconaXtraDBCluster) *Node {
 		},
 		Spec: appsv1.StatefulSetSpec{
 			Template: corev1.PodTemplateSpec{
+				ObjectMeta: metav1.ObjectMeta{
+					Annotations: cr.Spec.PXC.Annotations,
+				},
 				Spec: corev1.PodSpec{
 					SchedulerName: cr.Spec.PXC.SchedulerName,
 				},
